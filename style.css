@@ -432,7 +432,22 @@ footer {
 }
 
 /* --- Responsive --- */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
+    .nav-links a:not(.apple-btn) {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .product-name {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 1024px) {
 
     .bento-item,
     .bento-item.tall,
@@ -446,19 +461,6 @@ footer {
 @media (max-width: 768px) {
     :root {
         --section-padding: 60px 0;
-    }
-
-    .nav-links a:not(.apple-btn) {
-        display: none;
-    }
-
-    .nav-links {
-        gap: 12px;
-    }
-
-    .product-name {
-        font-size: 1.1rem;
-        flex-shrink: 0;
     }
 
     .headline-xl {
@@ -484,7 +486,6 @@ footer {
 
     .expression {
         font-size: 1.2rem;
-        /* Scaled down to prevent vertical stacking */
     }
 
     .plus,
