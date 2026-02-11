@@ -1,0 +1,462 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1d1d1f;
+    --text-secondary: #86868b;
+    --accent-color: #0071e3;
+    --card-bg: #f5f5f7;
+    --card-border: rgba(0, 0, 0, 0.05);
+    --font-family: "SF Pro JP", "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    --section-padding: 160px 0;
+    --border-radius: 28px;
+    --subnav-height: 52px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    /* Balanced line height for Japanese */
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    /* Slightly positive tracking for clarity */
+    overflow-x: hidden;
+    word-break: normal;
+    /* Better for mixed English/Japanese */
+    overflow-wrap: anywhere;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 22px;
+}
+
+/* --- Local Nav (Apple Signature) --- */
+
+#local-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: var(--subnav-height);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+#local-nav.stuck {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.75rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* --- Typography --- */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    letter-spacing: -0.005em;
+}
+
+.headline-xl {
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    /* Reduced min size for mobile */
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.2em;
+}
+
+.headline-l {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    /* Reduced min size for mobile */
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.headline-m {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.subheadline {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+    font-weight: 500;
+    line-height: 1.5;
+    margin-top: 1.2rem;
+    max-width: 42rem;
+    /* Better line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #1d1d1f 20%, #86868b 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Intro Block (Image Focus) --- */
+.intro-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    text-align: center;
+}
+
+.intro-media {
+    width: 100%;
+    max-width: 640px;
+    /* Smaller, focused size per user request */
+    margin: 0 auto;
+    border-radius: 32px;
+    /* Smooth rounded corners */
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.intro-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.intro-media:hover {
+    transform: scale(1.02);
+}
+
+/* --- Hero --- */
+#hero {
+    height: calc(100vh - var(--subnav-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+}
+
+.hero-bg-media {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hero-bg-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Sections --- */
+.section {
+    padding: var(--section-padding);
+}
+
+.center-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Bento Grid (Dynamic and Complex) --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 24px;
+    margin-top: 80px;
+}
+
+.bento-item {
+    grid-column: span 12;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 56px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--card-border);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.25, 1);
+}
+
+.bento-item:hover {
+    transform: scale(1.01);
+}
+
+.bento-item.tall {
+    grid-column: span 6;
+    height: 600px;
+}
+
+.bento-item.wide {
+    grid-column: span 12;
+}
+
+.bento-item.medium {
+    grid-column: span 6;
+    height: 450px;
+}
+
+.bento-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.bento-item p {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 600px;
+    /* Increased to reduce excessive white space */
+}
+
+.bento-icon {
+    font-size: 2.8rem;
+    margin-bottom: 32px;
+    color: var(--accent-color);
+}
+
+/* --- Full Width Media --- */
+.full-width-media {
+    grid-column: span 12;
+    margin-top: 40px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.06);
+}
+
+.full-width-media img {
+    width: 100%;
+    display: block;
+    transition: transform 2.5s cubic-bezier(0.15, 1, 0.15, 1);
+}
+
+.full-width-media:hover img {
+    transform: scale(1.03);
+}
+
+/* --- Formula Display --- */
+.formula-display {
+    background: var(--card-bg);
+    padding: 80px 40px;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    /* Forces horizontal layout */
+    gap: clamp(10px, 4vw, 40px);
+    /* Dynamic gap to prevent wrapping */
+    margin: 80px 0;
+    border: 1px solid var(--card-border);
+    overflow-x: auto;
+    /* Fallback for extremely small screens */
+}
+
+.expression {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.plus,
+.equals {
+    color: var(--text-secondary);
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+/* --- Demo Player --- */
+.player-wrapper {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 100px 60px;
+    margin-top: 80px;
+    border: 1px solid var(--card-border);
+}
+
+.player-ui {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.label-pill {
+    padding: 12px 24px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.label-pill.active {
+    background: #000;
+    color: #fff;
+}
+
+/* --- Buttons --- */
+.apple-btn {
+    background: #0071e3;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 980px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    display: inline-block;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.apple-btn:hover {
+    background: #0077ed;
+    transform: scale(1.05);
+}
+
+.apple-btn.secondary {
+    background: none;
+    color: #0071e3;
+}
+
+.apple-btn.secondary::after {
+    content: ' >';
+    font-weight: 700;
+}
+
+.apple-btn.black {
+    background: #000;
+    color: #fff;
+}
+
+/* --- Footer --- */
+footer {
+    padding: 100px 0;
+    background: #f5f5f7;
+    color: var(--text-secondary);
+}
+
+.footer-content {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 40px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+
+    .bento-item,
+    .bento-item.tall,
+    .bento-item.medium {
+        grid-column: span 12;
+        height: auto;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 80px 0;
+    }
+
+    .headline-xl {
+        font-size: 3.5rem;
+    }
+
+    .formula-display {
+        padding: 40px 20px;
+        gap: 12px;
+    }
+
+    .expression {
+        font-size: 1.2rem;
+        /* Scaled down to prevent vertical stacking */
+    }
+
+    .plus,
+    .equals {
+        font-size: 1.2rem;
+    }
+}
