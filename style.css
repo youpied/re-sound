@@ -249,7 +249,7 @@ h4 {
     grid-column: span 12;
     background: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 56px;
+    padding: 40px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -265,7 +265,7 @@ h4 {
 
 .bento-item.tall {
     grid-column: span 6;
-    height: 600px;
+    height: 320px;
 }
 
 .bento-item.wide {
@@ -274,7 +274,7 @@ h4 {
 
 .bento-item.medium {
     grid-column: span 6;
-    height: 450px;
+    height: 360px;
 }
 
 .bento-item h3 {
@@ -284,15 +284,14 @@ h4 {
 
 .bento-item p {
     color: var(--text-secondary);
-    font-size: 1.25rem;
-    line-height: 1.6;
-    max-width: 600px;
-    /* Increased to reduce excessive white space */
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 100%;
 }
 
 .bento-icon {
-    font-size: 2.8rem;
-    margin-bottom: 32px;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
     color: var(--accent-color);
 }
 
@@ -351,8 +350,8 @@ h4 {
 .player-wrapper {
     background: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 100px 60px;
-    margin-top: 80px;
+    padding: 60px 24px;
+    margin-top: 60px;
     border: 1px solid var(--card-border);
 }
 
@@ -361,15 +360,23 @@ h4 {
     margin: 0 auto;
 }
 
+.stage-labels {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
 .label-pill {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.04);
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     transition: all 0.2s;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .label-pill.active {
@@ -432,17 +439,42 @@ footer {
     .bento-item.medium {
         grid-column: span 12;
         height: auto;
-        min-height: 350px;
+        min-height: 280px;
     }
 }
 
 @media (max-width: 768px) {
     :root {
-        --section-padding: 80px 0;
+        --section-padding: 60px 0;
+    }
+
+    .nav-links a:not(.apple-btn) {
+        display: none;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .product-name {
+        font-size: 1.1rem;
+        flex-shrink: 0;
     }
 
     .headline-xl {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
+    }
+
+    .headline-l {
+        font-size: 2.2rem;
+    }
+
+    .bento-item {
+        padding: 32px;
+    }
+
+    .bento-item h3 {
+        font-size: 1.4rem;
     }
 
     .formula-display {
@@ -458,5 +490,16 @@ footer {
     .plus,
     .equals {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-content {
+        padding: 0 16px;
+    }
+
+    .apple-btn.black {
+        padding: 8px 16px;
+        font-size: 0.85rem;
     }
 }
